@@ -1,0 +1,33 @@
+version: '2'
+services:
+    node1:
+        build: .
+        container_name: node1
+        environment:
+            ID: 1
+            PORT: 3001
+            PEERS: node1:3001,node2:3002,node3:3003,node4:3004
+
+    node2:
+        build: .
+        container_name: node2
+        environment:
+            ID: 2
+            PORT: 3002
+            PEERS: node1:3001,node2:3002,node3:3003,node4:3004
+
+    node3:
+        build: .
+        container_name: node3
+        environment:
+            ID: 3
+            PORT: 3003
+            PEERS: node1:3001,node2:3002,node3:3003,node4:3004
+
+    node4:
+        build: .
+        container_name: node4
+        environment:
+            ID: 4
+            PORT: 3004
+            PEERS: node1:3001,node2:3002,node3:3003,node4:3004
