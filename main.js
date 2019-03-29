@@ -20,7 +20,6 @@ app.get('/id', (req, res) => {
 app.post('/heartbeat', express.json({type: "*/*"}), (req, res) => {
     var is_ok = false
     var body = req.body
-    console.log(`Heartbeat: ${heartbeat}`)
 
     if (body.term >= current_term && body.heartbeat >= heartbeat) {
         is_ok = true
@@ -35,6 +34,7 @@ app.post('/heartbeat', express.json({type: "*/*"}), (req, res) => {
         }
     }
 
+    console.log(`Heartbeat: ${heartbeat}`)
     res.send(JSON.stringify({ok: is_ok}))
 })
 
@@ -94,7 +94,7 @@ async function doElection() {
         }
     }
 
-    var needed = Math.ceil((peers.length + 1) / 2) + 1
+    var needed = (peers.length + 1) / 2
 
     if (votes_received >= needed) {
         current_term = next_term
