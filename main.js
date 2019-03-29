@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const request = require('request-promise-native')
 const express = require('express')
 const app = express()
@@ -13,7 +12,6 @@ var heartbeat_timer = null
 var heartbeat = 0
 var current_term = 0
 var voted_for = null
-var campaigning = false
 
 app.get('/id', (req, res) => {
     res.send(JSON.stringify({id: my_id}))
